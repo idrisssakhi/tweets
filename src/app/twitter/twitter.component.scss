@@ -1,0 +1,25 @@
+.principal-container {
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+
+    .result {
+        padding-top: 20px;
+    }
+
+    .centered-button {
+        display: block;
+        margin-left: auto;
+        margin-right: auto 
+    }
+
+    .spaced-evently {
+        display: flex;
+        justify-content: space-around;     
+    }
+
+}
+
+nb-card {
+    width: 100%;
+}

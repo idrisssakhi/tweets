@@ -1,0 +1,35 @@
+<div class="principal-container">
+  <form [formGroup]="registerForm" (ngSubmit)="search()">
+    <nb-card>
+      <nb-card-header>Search parameters</nb-card-header>
+        <nb-card-body class="spaced-evently" >
+          <input type="text" nbInput placeholder="Serach param" formControlName="hintSearch">
+          
+          <nb-select placeholder="choose tweet type" formControlName="tweetType">
+            <nb-option *ngFor="let type of tweetTypes" [value]="type">{{type.placeholder}}</nb-option>
+          </nb-select>
+
+          <nb-select placeholder="Select a language" formControlName="language">
+            <nb-option *ngFor="let language of languages" [value]="language">{{language.placeholder}}</nb-option>
+          </nb-select>
+      </nb-card-body>
+        <button nbButton status="primary" [disabled]="!registerForm.valid" type="submit">Search</button>
+    </nb-card>
+  </form>
+
+  <div class="result">
+    <h1>Results</h1>
+    <nb-list nbInfiniteList>
+      inside list
+      <nb-list-item *ngFor="let tweet of currentsTweets">
+        <nb-card accent="info">
+          <nb-card-header>{{ tweet.user.name }}</nb-card-header>
+          <nb-card-body class="example-items-rows">
+            {{ tweet.text }}
+          </nb-card-body>
+        </nb-card>
+      </nb-list-item>
+    </nb-list>
+    <button nbButton class="centered-button" status="primary" (click)="loadNext()" [disabled]="!!!pageToLoadNext && pageToLoadNext === '' ">more</button>
+  </div>
+</div>
